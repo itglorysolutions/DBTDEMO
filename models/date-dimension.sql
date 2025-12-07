@@ -8,7 +8,6 @@ WITH cleaned_data AS (
         HOUR(TO_TIMESTAMP(started_at))                                AS hour_started_at,
         DAYNAME(TO_TIMESTAMP(started_at))                             AS day_name_started_at,
         MONTH(TO_TIMESTAMP(started_at))                               AS month_started_at,
-        
         -- Day type: Weekend or Business day
         CASE 
             WHEN DAYNAME(TO_TIMESTAMP(started_at)) IN ('Sat', 'Sun') 
