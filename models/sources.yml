@@ -1,0 +1,11 @@
+# sources.yml
+version: 2
+
+sources:
+
+  - name: demo
+    database: demo
+    schema: public          # or whatever your schema is called
+    tables:
+      - name: bike
+      - name: weather
