@@ -8,7 +8,6 @@ With bike as (
     start_lng
 
     From {{ source('demo', 'bike') }}
-    Limit 10
 
 )
 

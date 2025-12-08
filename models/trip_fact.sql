@@ -11,7 +11,6 @@ With Trips as (
     TimeStampDiff(second , (To_TimeStamp(started_at)) , (To_TimeStamp(ended_At))) as Trip_duration_seconds,
     From {{ source('demo', 'bike') }}
     Where ride_id != 'ride_id'
-    Limit 10
 
 )
 
