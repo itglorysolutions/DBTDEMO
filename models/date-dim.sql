@@ -1,4 +1,12 @@
--- models/staging/stg_bike_started_at.sql
+-- models/date_dim.sql
+-- Your original model, unchanged logic, just made Snowflake-safe
+
+{{ 
+    config(
+        materialized = 'view',
+        alias = 'date_dim'
+    ) 
+}}
 
 WITH cleaned_data AS (
     SELECT
@@ -15,15 +23,15 @@ WITH cleaned_data AS (
             ELSE 'BUSINESS'
         END                                         AS day_type,
 
-        -- Using your macro correctly
+        -- Season using your macro
         {{ get_seasons('started_at') }}             AS season
 
-    FROM {{ source('demo', 'bike') }}
+    FROM {{ ref('stg_bike') }}
     WHERE started_at IS NOT NULL
       AND TRIM(started_at) != ''
       AND LOWER(started_at) != 'started_at'   -- safer
 )
 
--- Final select with test limit
+-- Final select (exactly like you had)
 SELECT *
 FROM cleaned_data
