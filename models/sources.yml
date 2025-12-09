@@ -5,7 +5,7 @@ sources:
 
   - name: demo
     database: demo
-    schema: public          # or whatever your schema is called
+    schema: schema          # or whatever your schema is called
     tables:
       - name: bike
       - name: weather
